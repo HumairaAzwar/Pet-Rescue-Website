@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Dashbord.css" />
+    <script>
+        fetch('count_pets.php')
+        .then(response => response.json()) 
+        .then(data => {
+            document.getElementById('totalPets').innerText = data.total;
+        })
+        .catch(error => {
+            console.error('Error fetching total Pets:', error);
+        });
+
+        fetch('count_users.php')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('totalUsers').innerText = data.total;
+        })
+        .catch(error => {
+            console.error('Error fetching total Users:', error);
+        })
+    </script>
+</head>
+<body>
+    <h1>SafePaws Foundation</h1>
+    <h2>Hello Admin!</h2>
+    <div id="monitors">
+        <div class="monitor">
+            <h3>Current Users</h3>
+            <p id="totalUsers"></p>
+        </div>
+        <div class="monitor">
+            <h3>Current Pets</h3>
+            <p id="totalPets"></p>
+        </div>
+    </div>
+</body>
+</html>

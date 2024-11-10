@@ -1,0 +1,102 @@
+<html>
+<head>
+    <title>Users</title>
+    <link rel="stylesheet" href="pets.css">
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const tableBody = document.getElementById("dynamic");
+
+        fetch("pets.php")
+        .then(php_obj => php_obj.json())
+        .then(data => {
+            data.forEach(pet => {
+                const row = document.createElement("tr");
+                row.innerHTML =
+                    `<td>${pet.id}</td>
+                    <td>${pet.name}</td>
+                    <td>${pet.breed}</td>
+                    <td>${pet.age}</td>
+                    <td>${pet.description}</td>
+                    <td>${pet.status}</td>
+                    <td><button class = "btn" type = "submit" id = "${pet.id}">Delete</button>
+                       <button class = "edit" type = "submit" id = "${pet.id}">Edit</button>   
+                    </td>`;
+                tableBody.appendChild(row);
+
+                row.setAttribute('del',pet.id);
+                    
+                // adding event listener to Delete
+                const buttons = document.getElementsByClassName('btn');
+                const buttons_array = Array.from(buttons);
+                console.log(buttons);
+                buttons_array.forEach(button => {
+                    const id = button.getAttribute('id');
+                    // console.log(`Button ID: ${id}`);
+                    button.addEventListener('click', () => {
+                        // console.log(id);
+                        fetch('deletePets.php', {
+                            method : 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: new URLSearchParams({
+                                'id' : id
+                            })
+                        })
+                        .then(response => response.json()) 
+                        .then(result => {
+                            if (result.status === 'success') {
+                                document.querySelector(`[del="${id}"]`).remove();
+                            }
+                            else {
+                                console.error('Error: ', result.error);
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+                    })
+                })
+        
+                // setting up Edit button
+                const edit_btns = document.getElementsByClassName('edit');
+                const edit_array = Array.from(edit_btns);
+
+                edit_array.forEach(button => {
+                    const id = button.getAttribute('id');
+                    button.addEventListener('click', () => {
+                        // console.log('clicked');
+                        fetch(`editPets.php?id=${id}`)
+                        .then(response => response.json())  
+                        .then(data => {
+                            //console.log(data.url);
+                            window.location.href = data.url;
+                        })
+                        .catch(error => console.error('Error:', error));
+                    })
+                });
+            })
+        })
+    }) 
+</script>
+<body>
+    <h1>Pets Informations</h1>
+    <div id="container" >
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Breed</th>
+                    <th>Age</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="dynamic">
+            </tbody>
+        </table>
+        <a href="addPets.html" id="add">Add Pets</a>
+    </div>
+</body>
+</html>

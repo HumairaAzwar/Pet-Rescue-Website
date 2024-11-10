@@ -1,0 +1,60 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header/NavBar */
+    .navbar {
+      width: 100%;
+      overflow: hidden;
+      background-color: #F9C892; /* Light orange */
+      font-weight: 500;
+      border-radius: 5px;
+      border: 3px solid #edab87; /* Border to match footer */
+    }
+
+    /* Links in the navbar */
+    .navbar a {
+      float: right;
+      font-size: 20px;
+      color: white;
+      text-align: center;
+      padding: 18px 40px; /* Reduced padding to fit more items */
+      text-decoration: none;
+    }
+
+    /* Logo */
+    .navbar img {
+      float: left;
+      padding: 10px; /* Adds some spacing around the logo */
+    }
+
+    /* Hover effect for navbar links */
+    .navbar a:hover {
+      background-color: #edab87; /* Matches button and footer theme */
+      color: white;
+    }
+
+    /* Ensure content fits well with the navbar */
+    body {
+      padding-top: 100px; /* Adds space to avoid content overlapping navbar */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation bar with logo and links -->
+  <div class="navbar">
+    <img src="..\temp\05_logo-01.png" alt="Logo" height="80px"> <!-- Adjusted logo height -->
+    <a href="#help">Help</a>
+    <a href="f_signup.php">Signup</a>
+    <a href="f_login.php">Login</a>
+    <a href="#home">Home</a>
+  </div>
+</body>
+</html>

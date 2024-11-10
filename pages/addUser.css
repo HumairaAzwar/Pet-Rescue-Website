@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f3;
+}
+
+#container h2 {
+    text-align: center;
+}
+
+#container form {
+    background: linear-gradient(to bottom,#FEF6E1,#FFFDD0);
+    height: 500px;
+    width: 375px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#container #form {
+    display: flex;
+    height: 80vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+#container #form #contents {
+    position: relative;
+    top: 50px;
+}
+
+#container #form #contents #btn {
+    border-radius: 7px;
+    border-style: none;
+    padding: 7px;
+    min-width: 100px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #ea8444;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    transition: background-color 0.5s ease;
+}
+
+#container #form #contents #btn:hover {
+    background-color: #ce5c15;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 5px;
+    display: block;
+    color: #000000;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 85%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #007BFF;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

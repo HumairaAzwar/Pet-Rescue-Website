@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Pets</title>
+    <link rel="stylesheet" href="./addPets.css" />
+</head>
+<body>
+    <form action="addPets.php" method="post" enctype="multipart/form-data">
+        <h1>Pet Information</h1>
+
+        <div id="form">
+            <input type="number" id="primary_key" name="primary_key" style="display: none;"/>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" maxlength="50" required>
+    
+            <label for="breed">Breed:</label>
+            <input type="text" id="breed" name="breed" maxlength="50" required>
+    
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="0" max="100" required>
+    
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" maxlength="100" required></textarea>
+    
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="Available">Available</option>
+                <option value="Rehomed">Rehomed</option>
+            </select>
+    
+            <label for="image">Attach an image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+    
+            <input type="submit" value="Submit" onclick="return (urlParams.get('id') != null) ? console.log('clicked submit') : checkFile();">
+
+        </div>
+    </form>
+</body>
+<script>
+    let urlParams;
+    
+    window.onload = function() {
+        urlParams = new URLSearchParams(window.location.search);
+
+        // Set form fields only if the URL parameters exist
+        if (urlParams.has('name')) {
+            document.getElementById('name').value = urlParams.get('name');
+            document.getElementById('breed').value = urlParams.get('breed');
+            document.getElementById('age').value = urlParams.get('age');
+            document.getElementById('description').value = urlParams.get('description');
+            document.getElementById('status').value = urlParams.get('status');
+            document.getElementById('primary_key').value = urlParams.get('id');
+        };
+    }
+    function checkFile() {
+        const file = document.getElementById('image');
+
+        if (file.files.length === 0) {
+            alert("Please Select an Image!");
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
+</script>
+</html>

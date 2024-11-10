@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="./addUser.css" />
+</head>
+<body>
+    <div id="container">
+        <h2>Enter the details below!</h2>
+        <div id="form">
+            <form action="addUser.php" method="post">
+                <div id="contents">
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username" required>
+                    <br><br>
+        
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password" required>
+                    <br><br>
+        
+                    <label for="role">Role:</label><br>
+                    <select id="role" name="role">
+                        <option value="admin" >Admin</option>
+                        <option value="ordinary" selected>Ordinary</option>
+                    </select>
+                    <br><br>
+        
+                    <input type="submit" value="Add" id="btn">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
